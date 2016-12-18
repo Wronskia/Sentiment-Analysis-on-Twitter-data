@@ -42,8 +42,27 @@ def add_ngram(sequences, token_indice, ngram_range=2):
 
     return new_sequences
 
-def train_test_features(full=True, n_gram=False, pretrained=True, nb_words=None):
 
+
+def train_test_features(full=True, n_gram=False, pretrained=True, nb_words=None):
+"""
+Function that does the cleaning,the tokenization, add the n-grams, build the weight matrix(pretrained)
+depending on the arguments
+Arguments: full (True to use the full dataset)
+           n_gram (True to use 2-grams and False to use 1-grams) we didn't use more than 2-grams
+           because of the limit of 140 characters in twitter
+           pretrained (True to use the glove200 pretraining)
+           nb_words (None to take all the words otherwise takes an integer value N which will take the N most frequent words)
+Returns : train_sequences (List of list of word indexes for each tweet for the training)
+          test_sequences (List of list of word indexes for each tweet for the test)
+          labels (Labels)
+          max_features (Maximum word index in the list of list train_sequences)
+          embedding_matrix (if pretrained=True returns the embedding_matrix builded by the help of glove)
+
+          This code was inspired from : https://github.com/fchollet/keras/blob/master/examples/imdb_fasttext.py
+          and from : https://github.com/fchollet/keras/blob/master/examples/pretrained_word_embeddings.py
+
+"""
     np.random.seed(0)
 
     if full:
@@ -179,6 +198,16 @@ def train_test_features(full=True, n_gram=False, pretrained=True, nb_words=None)
         return train_sequences, labels, test_sequences, max_features
 
 def dumpFeatures(full, n_gram, pretrained, nb_words, namefile):
+    """
+    Function that dumps the output of the function above : train_test_features()
+    Arguments: full (True to use the full dataset)
+               n_gram (True to use 2-grams and False to use 1-grams) we didn't use more than 2-grams
+               because of the limit of 140 characters in twitter
+               pretrained (True to use the glove200 pretraining)
+               namefile (the name of the file that will contain the output)
+               nb_words (None to take all the words otherwise takes an integer value N which will take the N most frequent words)
+
+    """
     if pretrained:
         train_sequences, labels, test_sequences, max_features, embedding_matrix = train_test_features(full, n_gram, pretrained, nb_words)
         cPickle.dump([train_sequences, labels, test_sequences, max_features, embedding_matrix],open(namefile, 'wb'))

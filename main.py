@@ -4,6 +4,7 @@ import _pickle as cPickle
 import xgboost as xgb
 from collections import Counter
 
+
 def create_csv_submission(ids, y_pred, name):
     """
     Creates an output file in csv format for submission to kaggle
@@ -17,6 +18,11 @@ def create_csv_submission(ids, y_pred, name):
         writer.writeheader()
         for r1, r2 in zip(ids, y_pred):
             writer.writerow({'Id':int(r1),'Prediction':int(r2)})
+
+"""
+Loading the pickled files of the models
+
+"""
 
 train1 = cPickle.load(open("train_conv1_pretrained.dat", "rb"))
 train2 = cPickle.load(open("train_conv2_pretrained.dat", "rb"))
@@ -40,12 +46,22 @@ test8 = cPickle.load(open("test_conv2_bigram.dat", "rb"))
 test9 = cPickle.load(open("test_conv_lstm_bigram.dat", "rb"))
 test10 = cPickle.load(open("test_lstm_bigram.dat", "rb"))
 
+
+"""
+Building from the pickled files the probability matrix for the train and the test set
+
+"""
 train = np.hstack((train1, train2, train3, train4, train5, train6, train7, train8, train9, train10))
 test = np.hstack((test1, test2, test3, test4, test5, test6, test7, test8, test9, test10))
 
 y = np.array(1250000 * [0] + 1250000 * [1])
 np.random.seed(0)
 np.random.shuffle(y)
+
+"""
+Fitting XGBOOST over the probability matrix obtained from our models
+
+"""
 
 model = xgb.XGBClassifier().fit(train, y)
 
