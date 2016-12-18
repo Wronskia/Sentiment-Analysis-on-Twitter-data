@@ -3,6 +3,7 @@ from preprocess import clean
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing import sequence
 import numpy as np
+import _pickle as cPickle
 
 def create_ngram_set(input_list, ngram_value=2):
     """
@@ -41,7 +42,7 @@ def add_ngram(sequences, token_indice, ngram_range=2):
 
     return new_sequences
 
-def train_test_features(full=True, n_gram=True, pretrained=False, nb_words=None):
+def train_test_features(full=True, n_gram=False, pretrained=True, nb_words=None):
 
     np.random.seed(0)
 
@@ -63,8 +64,9 @@ def train_test_features(full=True, n_gram=True, pretrained=False, nb_words=None)
         tweet = clean(tweet)
         train_tweets.append(tweet)
         count = count + 1
-        sys.stdout.write('\r{0}'.format(count) + '/' + str(train_size) + ' processed tweets.')
-        sys.stdout.flush()
+        if count%1000 == 0:
+            sys.stdout.write('\r{0}'.format(count) + '/' + str(train_size) + ' processed tweets.')
+            sys.stdout.flush()
     posfile.close()
 
     for tweet in negfile:
@@ -72,8 +74,9 @@ def train_test_features(full=True, n_gram=True, pretrained=False, nb_words=None)
         tweet = clean(tweet)
         train_tweets.append(tweet)
         count = count + 1
-        sys.stdout.write('\r{0}'.format(count) + '/' + str(train_size) + ' processed tweets.')
-        sys.stdout.flush()
+        if count%1000 == 0:
+            sys.stdout.write('\r{0}'.format(count) + '/' + str(train_size) + ' processed tweets.')
+            sys.stdout.flush()
     negfile.close()
 
     test_size = 10000
@@ -87,8 +90,9 @@ def train_test_features(full=True, n_gram=True, pretrained=False, nb_words=None)
         tweet = clean(tweet)
         test_tweets.append(tweet)
         count = count + 1
-        sys.stdout.write('\r{0}'.format(count) + '/' + str(test_size) + ' processed tweets.')
-        sys.stdout.flush()
+        if count%1000 == 0:
+            sys.stdout.write('\r{0}'.format(count) + '/' + str(test_size) + ' processed tweets.')
+            sys.stdout.flush()
 
     print('\nTokenization of tweets...')
     if nb_words == None:
@@ -138,7 +142,7 @@ def train_test_features(full=True, n_gram=True, pretrained=False, nb_words=None)
     print('train_sequences shape:', train_sequences.shape)
     print('test_sequences shape:', test_sequences.shape)
 
-    labels = np.array(train_size/2 * [0] + train_size/2 * [1])
+    labels = np.array(int(train_size/2) * [0] + int(train_size/2) * [1])
 
     print('Shuffling of the training set...')
     indices = np.arange(train_sequences.shape[0])
@@ -173,3 +177,12 @@ def train_test_features(full=True, n_gram=True, pretrained=False, nb_words=None)
         return train_sequences, labels, test_sequences, max_features, embedding_matrix
     else:
         return train_sequences, labels, test_sequences, max_features
+
+def dumpFeatures(full, n_gram, pretrained, nb_words, namefile):
+    if pretrained:
+        train_sequences, labels, test_sequences, max_features, embedding_matrix = train_test_features(full, n_gram, pretrained, nb_words)
+        cPickle.dump([train_sequences, labels, test_sequences, max_features, embedding_matrix],open(namefile, 'wb'))
+    else:
+        train_sequences, labels, test_sequences, max_features = train_test_features(full, n_gram, pretrained)
+        cPickle.dump([train_sequences, labels, test_sequences, max_features], open(namefile, 'wb'))
+    return

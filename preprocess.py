@@ -28,8 +28,9 @@ def remove_repetitions(tweet):
     tweet=tweet.split()
     for i in range(len(tweet)):
         tweet[i]=''.join(''.join(s)[:2] for _, s in itertools.groupby(tweet[i])).replace('#', '')
-        if not d.check(tweet[i]):
-            tweet[i] = ''.join(''.join(s)[:1] for _, s in itertools.groupby(tweet[i])).replace('#', '')
+        if len(tweet[i])>0:
+            if not d.check(tweet[i]):
+                tweet[i] = ''.join(''.join(s)[:1] for _, s in itertools.groupby(tweet[i])).replace('#', '')
     tweet=' '.join(tweet)
     return tweet
 
