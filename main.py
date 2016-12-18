@@ -2,7 +2,7 @@ import numpy as np
 import csv
 import _pickle as cPickle
 import xgboost as xgb
-from collections import Counter
+
 
 
 def create_csv_submission(ids, y_pred, name):
@@ -67,5 +67,4 @@ model = xgb.XGBClassifier().fit(train, y)
 
 y_pred = model.predict(test)
 y_pred = 1 - 2*y_pred
-print(Counter(y_pred))
 create_csv_submission(np.arange(1,10001),y_pred,'submission.csv')
