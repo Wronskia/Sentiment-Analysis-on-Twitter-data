@@ -60,4 +60,16 @@ In the Final folder you can find :
 
 ## How to run the code
 
-- Start by 
+- Start by installing the packages in the Final folder :
+```
+pip install requirements.txt
+```
+For the baseline install fastText :
+
+```
+$ git clone https://github.com/facebookresearch/fastText.git
+$ cd fastText
+$ make
+```
+Then put the files fasttext_tuning.py and fasttext_files_creation.py in the folder fastText
+You can then use fasttext_tuning.py to optimize the parameters after creating the files for the input of fastText
