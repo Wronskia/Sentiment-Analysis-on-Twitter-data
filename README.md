@@ -33,14 +33,31 @@ Here are the results for the 10 models and the final result :
 | Model 9      | 0.91390            | 0.87818             |
 | Model 10     | 0.90856            | 0.87767             |
 
-After that, we applied XGBOOST over the matrix of probabilities which resulted in an accuracy of $0.91967$ and a validation accuracy of $0.88416$.
+After that, we applied XGBOOST over the matrix of probabilities which resulted in an accuracy of 0.91967 and a validation accuracy of 0.88416.
 
-We scored $0.88300$ on kaggle
+We scored 0.88300 on kaggle
 You can see the leaderboard on : https://inclass.kaggle.com/c/epfml-text/leaderboard
 
 After tuning the hyperparameters with fastText baseline, we did use them on the neural network models. However, beside a quick tuning, we didn't optmize the hyperparameters of the neural networks because our model was sufficient enough for the competition.
 Therefore, one could improve the scores by tuning the hyperparameters and/or removing/adding other models like GRU ...
 
-## Folders
+## Files/Folders
 
+Below are the details of the files and folders :
 
+- `TFIDF-LIGHTGBM`: This ipynb file outlines our first attempt on modeling our problem
+- `Final`: The folder that contains our final model explained above
+
+In the Final folder you can find :
+
+- `requirements.txt`: Contains the required packages to run our model (pip install requirement)
+- `features.py`: Contains the details of the building of the feature matrix
+- `models.py`: Contains the details of the 10 models 
+- `main.py`: Load the pickled neural network models + fits the obtained results with XGBOOST + Creates the kaggle csv submission
+- `preprocess.py`: Preprocesses all the tweets (Cleaning part of the tweets)
+- `dico`: This folder contains the 3 normalizing dictionnaries 
+- `features`: This folder contains the pickled files of the models for both the train and test set
+
+## How to run the code
+
+- Start by 
