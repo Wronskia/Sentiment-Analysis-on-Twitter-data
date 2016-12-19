@@ -8,7 +8,6 @@ you can download the dataset on https://inclass.kaggle.com/c/epfml-text/data
 
 ## Results
 
-
 As a baseline, we used fastText on the small dataset.
 For the final model,and over the full dataset, we used 10 neural network models over two set of features (5 models on each): 
 - `Pre-trained embedding`: The first set of features used 1-grams with pretrained word embeddings (GLoVE)
@@ -33,7 +32,7 @@ Here are the results for the 10 models and the final result :
 | Model 9      | 0.91390            | 0.87818             |
 | Model 10     | 0.90856            | 0.87767             |
 
-After that, we applied XGBOOST over the matrix of probabilities which resulted in an accuracy of 0.91967 and a validation accuracy of 0.88416.
+After that, we applied XGBoost over the matrix of probabilities which resulted in an accuracy of 0.91967 and a validation accuracy of 0.88416.
 
 We scored 0.88300 on kaggle
 You can see the leaderboard on : https://inclass.kaggle.com/c/epfml-text/leaderboard
@@ -71,8 +70,8 @@ $ git clone https://github.com/facebookresearch/fastText.git
 $ cd fastText
 $ make
 ```
-Then put the files fasttext_tuning.py and fasttext_files_creation.py in the folder fastText
-You can then use fasttext_tuning.py to optimize the parameters after creating the files for the input of fastText.
+Then put the files `fasttext_tuning.py` and `fasttext_files_creation.py` in the folder fastText
+You can then use `fasttext_tuning.py` to optimize the parameters after creating the files for the input of fastText.
 
 - To run the final model :
 
@@ -84,16 +83,8 @@ $ python3 run.py
 ```
 This will yield our Kaggle prediction that scored 0.88300.
 
-We used EC2 AMAZON server. Actually, we runned each one of the 10 models apart (for sake of memory) and we pickled the resulting features.
+We used a g2.2xlarge instance on Amazon Web Service. Actually, we runned each one of the 10 models apart (for sake of memory) and we pickled the resulting features.
 
-However, if you want to run your personalized model or run the models from the start, please run one model at a time by commenting the 9 others in the file Models.py and dump the features.
+However, if you want to run your personalized model or run the models from the start, please run one model at a time by commenting the 9 others in the file `models.py` and dump the features.
 
-After dumping all the features, load them and run XGBOOST on the probability matrix.
-
-
-## Authors
-
-- Yassine Benyahia: yassine.benyahia@epfl.ch
-- Mohammed Hamza Sayah: mohammed.sayah@epfl.ch
-- Varun Batta: varun.batta@epfl.ch
-
+After dumping all the features, load them and run XGBoost on the probability matrix.
