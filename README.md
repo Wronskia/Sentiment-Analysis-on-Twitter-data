@@ -13,9 +13,9 @@ For the final model,and over the full dataset, we used 10 neural network models 
 - `Pre-trained embedding`: The first set of features used 1-grams with pretrained word embeddings (GLoVE)
 - `2-gram`: The second set of features used 1,2-gram features
 
-After building the 10 models, we fitted XGBOOST over the matrix of probabilities (10 by 2500000) which yield the final result.
+After building the 10 models, we fitted XGBoost over the matrix of probabilities (10 by 2500000) which yield the final result.
 
-In these 10 models, we mainly used LSTM,CONVOLUTIONS,MAXPOOLING layers. We mixed them by changing the seeds and the set of features.
+In these 10 models, we mainly used LSTM, Convolutions, MaxPooling layers. We mixed them by changing the seeds and the set of features.
 You can see the details of the models on final/models.
 Here are the results for the 10 models and the final result :
 
