@@ -91,5 +91,9 @@ However, if you want to run your personalized model or run the models from the s
 After dumping all the features, load them and run XGBOOST on the probability matrix.
 
 
+## Authors
 
+- Yassine Benyahia: yassine.benyahia@epfl.ch
+- Mohammed Hamza Sayah: mohammed.sayah@epfl.ch
+- Varun Batta: varun.batta@epfl.ch
 
