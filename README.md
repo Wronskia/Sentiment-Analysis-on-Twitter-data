@@ -81,6 +81,10 @@ $ make
 Then put the files `fasttext_tuning.py` and `files_creation_fasttext.py` in the folder fastText
 You can then use `fasttext_tuning.py` to optimize the parameters after creating the files for the input of fastText.
 
+```
+$ python3 fasttext_tuning.py
+```
+
 You can create the input of fasttext by the following :
 
 - Put the file files_creation_fasttext.py along with both train_pos.txt and train_neg.txt
