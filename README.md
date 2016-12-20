@@ -1,7 +1,7 @@
 # Sentiment Analysis on Twitter data 
 
 For the course "Pattern Classification and Machine Learning" at EPFL, we worked on sentiment analysis over twitter data. This project was a competition hosted by Kaggle : https://inclass.kaggle.com/c/epfml-text/
-We had at our disposal two sample files for fast testing of negative and positive labels both containing 100000 tweet
+We had at our disposal two sample files of negative and positive labels both containing 100000 tweet.
 Also, we had a complete dataset of 2500000 tweets (1250000 for each label)
 The dataset has been labeled by the presence of  ":)" for positive tweets and ":(" for negative tweets 
 you can download the dataset on https://inclass.kaggle.com/c/epfml-text/data
