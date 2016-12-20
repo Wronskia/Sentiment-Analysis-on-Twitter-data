@@ -69,14 +69,14 @@ def FastTextInput():
     validationfile=open("fastText_validation.txt",'w')
     for line in posfile:
         if i>90000:
-            if i%100000==0:
+            if i%10000==0:
                 print(i)
             i+=1
             line = line.decode('utf8')
             line=clean(line)  
             validationfile.write("__label__1 ,"+line+"\n")
         else:
-            if i%100000==0:
+            if i%10000==0:
                 print(i)
             i+=1
             line = line.decode('utf8')
