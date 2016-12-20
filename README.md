@@ -97,6 +97,7 @@ $ python3 files_creation_fasttext.py
 
 We stored all the features of the 10 models in the folder features.
 To run the models using the pickled features we provide :
+ 
 
 ```
 $ python3 run.py 
@@ -105,7 +106,10 @@ This will yield our Kaggle prediction that scored 0.88300.
 
 We used a g2.2xlarge instance on Amazon Web Service. Actually, we runned each one of the 10 models apart (for sake of memory) and we pickled the resulting features.
 
-However, if you want to run your personalized model or run the models from the start, please run one model at a time by commenting the 9 others in the file `models.py` and dump the features.
+However, if you want to run your personalized model or run the models from the start, please :
+
+- run one model at a time by commenting the 9 others in the file `models.py` and dump the features.
+- For Models who uses the first set of features (1-gram + pretrained GloVe), please download the twitter version of GloVe in : `http://nlp.stanford.edu/projects/glove/` and put the dezipped file in folder named embeddings contained in the Final folder.
 
 After dumping all the features, load them and run XGBoost on the probability matrix (by means of `run.py` ).
 
