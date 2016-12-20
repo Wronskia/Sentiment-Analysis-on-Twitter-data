@@ -9,14 +9,14 @@ you can download the dataset on https://inclass.kaggle.com/c/epfml-text/data
 ## Results
 
 As a baseline, we used fastText on the small dataset.
-For the final model,and over the full dataset, we used 10 neural network models over two set of features (5 models on each): 
+For the final model, and over the full dataset, we used 10 neural network models over two set of features (5 models on each): 
 - `Pre-trained embedding`: The first set of features used 1-grams with pretrained word embeddings (GLoVE)
 - `2-gram`: The second set of features used 1,2-gram features
 
 After building the 10 models, we fitted XGBoost over the matrix of probabilities (10 by 2500000) which yield the final result.
 
 In these 10 models, we mainly used LSTM, Convolutions, MaxPooling layers. We mixed them by changing the seeds and the set of features.
-You can see the details of the models on final/models.
+You can see the details of the models on Final/models.
 Here are the results for the 10 models and the final result :
 
 | Models       | Accuracy           | Validation Acc |
@@ -46,7 +46,7 @@ Below are the details of the files and folders :
 
 - `TFIDF-LIGHTGBM.ipynb`: This ipynb file outlines our first attempt on modeling our problem (We tried TF-IDF and LightGBM of Microsoft)
 - `Final`: The folder that contains our final model explained above
-- `Baseline`: The folder that contains our baseline model (FastText)
+- `baseline`: The folder that contains our baseline model (FastText)
 
 In the Final folder you can find :
 
@@ -58,7 +58,7 @@ In the Final folder you can find :
 - `dico`: This folder contains the 3 normalizing dictionnaries 
 - `features`: This folder contains the pickled files of the models for both the train and test set
 
-In the Final folder you can find :
+In the baseline folder you can find :
 
 - `files_creation_fasttext.py`: Handles the creation of both fastText_training.txt and fastText_validation.txt files (to feed fastText)
 - `fastText_training.txt`: Contains 90% of the small dataset in the fastText input format
