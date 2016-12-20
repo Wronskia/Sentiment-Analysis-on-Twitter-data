@@ -44,7 +44,7 @@ Therefore, one could improve the scores by tuning the hyperparameters and/or rem
 
 Below are the details of the files and folders :
 
-- `TFIDF-LIGHTGBM`: This ipynb file outlines our first attempt on modeling our problem (We tried TF-IDF and LightGBM of Microsoft)
+- `TFIDF-LIGHTGBM.ipynb`: This ipynb file outlines our first attempt on modeling our problem (We tried TF-IDF and LightGBM of Microsoft)
 - `Final`: The folder that contains our final model explained above
 - `Baseline`: The folder that contains our baseline model (FastText)
 
