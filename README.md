@@ -46,22 +46,30 @@ Below are the details of the files and folders :
 
 - `TFIDF-LIGHTGBM`: This ipynb file outlines our first attempt on modeling our problem
 - `Final`: The folder that contains our final model explained above
+- `Baseline`: The folder that contains our baseline model (FastText)
 
 In the Final folder you can find :
 
 - `requirements.txt`: Contains the required packages to run our model (pip install requirement)
 - `features.py`: Contains the details of the building of the feature matrix
 - `models.py`: Contains the details of the 10 models 
-- `main.py`: Load the pickled neural network models + fits the obtained results with XGBoost + Creates the Kaggle csv submission
+- `run.py`: Load the pickled neural network models + fits the obtained results with XGBoost + Creates the Kaggle csv submission
 - `preprocess.py`: Preprocesses all the tweets (Cleaning part of the tweets)
 - `dico`: This folder contains the 3 normalizing dictionnaries 
 - `features`: This folder contains the pickled files of the models for both the train and test set
+
+In the Final folder you can find :
+
+- `files_creation_fasttext.py`: Handles the creation of both fastText_training.txt and fastText_validation.txt files (to feed fastText)
+- `fastText_training.txt`: Contains 90% of the small dataset in the fastText input format
+- `fastText_validation.txt`: Contains 10% of the small dataset in the fastText input format
+- `fasttext_tuning.py`: Contains the details of the tuning of hyperparameters
 
 ## How to run the code
 
 - Start by installing the packages in the Final folder :
 ```
-pip install requirements.txt
+$ pip install requirements.txt
 ```
 - For the baseline install fastText :
 
@@ -70,8 +78,16 @@ $ git clone https://github.com/facebookresearch/fastText.git
 $ cd fastText
 $ make
 ```
-Then put the files `fasttext_tuning.py` and `fasttext_files_creation.py` in the folder fastText
+Then put the files `fasttext_tuning.py` and `files_creation_fasttext.py` in the folder fastText
 You can then use `fasttext_tuning.py` to optimize the parameters after creating the files for the input of fastText.
+
+You can create the input of fasttext by the following :
+
+- Put the file files_creation_fasttext.py along with both train_pos.txt and train_neg.txt
+- And by running this command below :
+```
+$ python3 files_creation_fasttext.py
+```
 
 - To run the final model :
 
@@ -87,4 +103,10 @@ We used a g2.2xlarge instance on Amazon Web Service. Actually, we runned each on
 
 However, if you want to run your personalized model or run the models from the start, please run one model at a time by commenting the 9 others in the file `models.py` and dump the features.
 
-After dumping all the features, load them and run XGBoost on the probability matrix.
+After dumping all the features, load them and run XGBoost on the probability matrix (by means of `run.py` ).
+
+## Authors
+
+- Yassine Benyahia : yassine.benyahia@epfl.ch
+- Mohammed Hamza Sayah : mohammed.sayah@epfl.ch
+- Varun Batta : varun.batta@epfl.ch
