@@ -50,7 +50,7 @@ Below are the details of the files and folders :
 
 In the Final folder you can find :
 
-- `requirements.txt`: Contains the required packages to run our model (pip install requirement)
+- `requirements.txt`: Contains the required packages to run our model (`pip install -r requirement`)
 - `features.py`: Contains the details of the building of the feature matrix
 - `models.py`: Contains the details of the 10 models 
 - `run.py`: Load the pickled neural network models + fits the obtained results with XGBoost + Creates the Kaggle csv submission
