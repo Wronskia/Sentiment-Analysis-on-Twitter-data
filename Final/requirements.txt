@@ -2,6 +2,5 @@ keras
 pyenchant
 xgboost
 regex
-itertools
 nltk
 scikit-learn
