@@ -6,8 +6,6 @@ Also, we had a complete dataset of 2500000 tweets (1250000 for each label)
 The dataset has been labeled by the presence of  ":)" for positive tweets and ":(" for negative tweets 
 you can download the dataset on https://inclass.kaggle.com/c/epfml-text/data
 
-We put our work in this Github Repository to simplify the reading : https://github.com/Wronskia/Sentiment-Analysis-on-Twitter-data
-
 ## Results
 
 As a baseline, we used fastText on the small dataset.
