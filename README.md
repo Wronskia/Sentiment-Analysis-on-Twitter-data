@@ -36,7 +36,7 @@ Here are the results for the 10 models and the final result :
 
 After that, we applied XGBoost over the matrix of probabilities which resulted in an accuracy of 0.91967 and a validation accuracy of 0.88416.
 
-We scored 0.88300 on kaggle
+We were ranked 1st (public and private leaderboard) out of 43 teams and scored 0.87660 (private) on kaggle
 You can see the leaderboard on : https://inclass.kaggle.com/c/epfml-text/leaderboard
 
 After tuning the hyperparameters with fastText baseline, we did use them on the neural network models. However, beside a quick tuning, we didn't optmize the hyperparameters of the neural networks because our model was sufficient enough for the competition.
