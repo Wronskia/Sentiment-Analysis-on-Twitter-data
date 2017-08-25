@@ -212,6 +212,6 @@ def dumpFeatures(full, n_gram, pretrained, nb_words, namefile):
         train_sequences, labels, test_sequences, max_features, embedding_matrix = train_test_features(full, n_gram, pretrained, nb_words)
         cPickle.dump([train_sequences, labels, test_sequences, max_features, embedding_matrix],open(namefile, 'wb'))
     else:
-        train_sequences, labels, test_sequences, max_features = train_test_features(full, n_gram, pretrained)
+        train_sequences, labels, test_sequences, max_features = train_test_features(full, n_gram, pretrained, nb_words)
         cPickle.dump([train_sequences, labels, test_sequences, max_features], open(namefile, 'wb'))
     return
